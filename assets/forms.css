@@ -11,10 +11,21 @@
 body {
     min-height: 100vh;
     padding-top: 90px; /* space for fixed header */
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
     display: flex;
     align-items: flex-start;
     justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        #4facfe,   /* blue */
+        #00f2fe,   /* sky blue */
+        #7bffd6,   /* aqua */
+        #ff9ae1,   /* pink */
+        #c77dff    /* violet */
+    );
+
+    background-size: 400% 400%;
+    animation: bgShift 8s ease-in-out infinite;
 }
 
 
@@ -132,4 +143,13 @@ body {
     .form-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Smooth animated background */
+@keyframes bgShift {
+    0%   { background-position: 0% 50%; }
+    25%  { background-position: 50% 50%; }
+    50%  { background-position: 100% 50%; }
+    75%  { background-position: 50% 50%; }
+    100% { background-position: 0% 50%; }
 }
