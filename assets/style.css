@@ -1,0 +1,59 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Full-page center layout */
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Welcome box */
+.welcome-container {
+    background: #ffffff;
+    padding: 40px 50px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    max-width: 400px;
+    width: 90%;
+}
+
+/* Title */
+.welcome-container h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Paragraph */
+.welcome-container p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Button Link */
+.welcome-container a {
+    display: inline-block;
+    text-decoration: none;
+    background: #4facfe;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: 0.3s ease;
+}
+
+/* Hover effect */
+.welcome-container a:hover {
+    background: #00c6ff;
+    transform: scale(1.05);
+}

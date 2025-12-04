@@ -1,7 +1,12 @@
 <?php
+// 🔍 Show errors on screen (for debugging only - remove on production)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // DB config (adjust if needed)
 $host = '127.0.0.1';
-$db   = 'clinic_db';
+$db   = 'patients';
 $user = 'root';
 $pass = ''; // empty if your phpMyAdmin/root has no password
 $charset = 'utf8mb4';
@@ -17,16 +22,13 @@ $options = [
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (PDOException $e) {
-    error_log("DB connect error: " . $e->getMessage());
-    // Redirect back with failure (don't show DB error to user)
-    header("Location: index.php?success=0");
-    exit;
+    // ❌ DB connection error
+    die("DB connect error: " . $e->getMessage());
 }
 
 // Only allow POST
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    header("Location: index.php");
-    exit;
+    die("Invalid request method. This script only accepts POST.");
 }
 
 // Collect + sanitize (basic)
@@ -38,7 +40,7 @@ $symptoms       = trim($_POST['symptoms'] ?? '');
 $payment        = trim($_POST['payment'] ?? '0');
 $payment_method = trim($_POST['payment_method'] ?? '');
 
-// Basic server-side validation (you can expand this)
+// Basic server-side validation
 $errors = [];
 if ($name === '') $errors[] = "Name is required.";
 if ($age === '' || !is_numeric($age) || intval($age) < 0) $errors[] = "Valid age is required.";
@@ -49,13 +51,17 @@ if ($payment === '' || !is_numeric($payment) || floatval($payment) < 0) $errors[
 if ($payment_method === '') $errors[] = "Payment method is required.";
 
 if (!empty($errors)) {
-    // If validation fails, redirect with failure.
-    // Optionally you can append an error code or message, but keep it simple:
-    header("Location: index.php?success=0");
+    // ❌ Show validation errors directly for now
+    echo "<h3>Validation errors:</h3><ul>";
+    foreach ($errors as $err) {
+        echo "<li>" . htmlspecialchars($err) . "</li>";
+    }
+    echo "</ul>";
+    echo '<p><a href="../views/forms.php">Go back to form</a></p>';
     exit;
 }
 
-// Prepare the INSERT statement (this creates $stmt)
+// Prepare the INSERT statement
 $sql = "INSERT INTO patients
         (name, age, gender, phone, symptoms, payment, payment_method, created_at)
         VALUES
@@ -74,13 +80,12 @@ try {
         ':payment_method' => $payment_method,
     ]);
 
-    // Success — redirect back to index.php with success=1
-    header("Location: index.php?success=1");
+    // ✅ Success
+    header("Location: ../views/forms.php?success=1");
     exit;
 
 } catch (PDOException $e) {
-    error_log("DB insert error: " . $e->getMessage());
-    header("Location: index.php?success=0");
-    exit;
+    // ❌ Insert error (likely table/column issue)
+    die("DB insert error: " . $e->getMessage());
 }
 ?>

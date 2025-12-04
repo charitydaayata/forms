@@ -2,7 +2,9 @@
 <html>
 <head>
     <title>Clinic Form</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/forms.css">
+
+
 </head>
 <body>
 
@@ -25,7 +27,8 @@
 <div class="form-container">
     <h2>Patient Information Form</h2>
 
-    <form action="process.php" method="post">
+    <form action="../handlers/Forms.php" method="post">
+
 
         <label for="name">Full Name</label>
         <input type="text" id="name" name="name" required>
