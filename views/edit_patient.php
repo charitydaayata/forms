@@ -6,13 +6,13 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $id = (int) $_GET['id'];
 
-// Page settings
+
 $pageTitle = 'Edit Patient';
-$cssFile   = '../assets/forms.css';  // reuse same form styling
+$cssFile   = '../assets/forms.css';  
 
 include '../includes/header.php';
 
-// DB config
+
 $host    = '127.0.0.1';
 $db      = 'patients';
 $user    = 'root';
@@ -32,7 +32,7 @@ try {
     die("DB connect error: " . $e->getMessage());
 }
 
-// Fetch patient
+
 $sql = "SELECT * FROM patients WHERE id = :id";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([':id' => $id]);

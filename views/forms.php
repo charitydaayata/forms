@@ -1,5 +1,4 @@
 <?php
-// Values used by header.php
 $pageTitle = 'Clinic Form';
 $cssFile   = '../assets/forms.css';
 

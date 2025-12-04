@@ -26,7 +26,7 @@ $sql = "SELECT id, name, age, gender, phone, symptoms, payment, payment_method, 
 $stmt = $pdo->query($sql);
 $rows = $stmt->fetchAll();
 
-// Output CSV headers
+
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=patients_records.csv');
 

@@ -1,5 +1,5 @@
 <?php
-// Simple delete handler
+
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     header('Location: ../views/records.php');
@@ -8,7 +8,7 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $id = (int) $_GET['id'];
 
-// DB config
+
 $host    = '127.0.0.1';
 $db      = 'patients';
 $user    = 'root';

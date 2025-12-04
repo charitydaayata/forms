@@ -1,13 +1,13 @@
 <?php
-// Page settings for header
+
 $pageTitle = 'Patient Records';
 $cssFile   = '../assets/records.css';
 
 include '../includes/header.php';
 
-// ---- Database connection (same settings as Forms.php) ----
+
 $host    = '127.0.0.1';
-$db      = 'patients';   // your database name
+$db      = 'patients';   
 $user    = 'root';
 $pass    = '';
 $charset = 'utf8mb4';
@@ -25,7 +25,7 @@ try {
     die("DB connect error: " . $e->getMessage());
 }
 
-// ---- Search by name (optional) ----
+
 $search = trim($_GET['q'] ?? '');
 
 $sql = "SELECT id, name, age, gender, phone, symptoms, payment, payment_method, created_at
