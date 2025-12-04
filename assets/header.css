@@ -1,0 +1,43 @@
+/* ===== HEADER BAR (UPDATED & VISIBLE) ===== */
+.site-header {
+    width: 100%;
+    background: linear-gradient(135deg, #357ab8, #1eaac6); /* darker than body */
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 14px 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-header h1 {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.site-header nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.site-header nav a:hover {
+    color: #ffeb3b;   /* yellow highlight */
+}
+
+
+

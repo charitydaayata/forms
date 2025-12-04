@@ -1,3 +1,4 @@
+
 /* Reset */
 * {
     margin: 0;
@@ -9,11 +10,13 @@
 /* Page background */
 body {
     min-height: 100vh;
+    padding-top: 90px; /* space for fixed header */
     background: linear-gradient(135deg, #4facfe, #00f2fe);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
+
 
 /* Form card */
 .form-container {
